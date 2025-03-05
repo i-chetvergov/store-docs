@@ -6,6 +6,10 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends git openssh-client && \
     rm -rf /var/lib/apt/lists/*
 
+# Добавляем GitHub в known_hosts
+RUN mkdir -p /home/mkdocs/.ssh && \
+ssh-keyscan github.com >> /home/mkdocs/.ssh/known_hosts
+
 # Создаем непривилегированного пользователя для повышения безопасности
 RUN useradd -m -s /bin/bash mkdocs
 
