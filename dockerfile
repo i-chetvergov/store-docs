@@ -3,7 +3,7 @@ FROM python:3.10-slim
 
 # Устанавливаем системные зависимости
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git && \
+    apt-get install -y --no-install-recommends git openssh-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Создаем непривилегированного пользователя для повышения безопасности
