@@ -16,9 +16,10 @@ RUN mkdir -p /mkdocs && chown -R mkdocs:mkdocs /mkdocs
 # Переключаемся на непривилегированного пользователя
 USER mkdocs
 
-# Обновляем pip и устанавливаем MkDocs с выбранной темой (mkdocs-material)
+# Обновляем pip и устанавливаем MkDocs с темой mkdocs-material, а также дополнительные плагины
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir mkdocs mkdocs-material
+    pip install --no-cache-dir mkdocs mkdocs-material mkdocs-glightbox mkdocs-swagger-ui-tag && \
+    pip install --no-cache-dir mkdocs-build-plantuml-plugin mkdocs-enumerate-headings-plugin
 
 # Добавляем путь к установленным бинарным файлам для пользователя mkdocs
 ENV PATH="/home/mkdocs/.local/bin:${PATH}"
