@@ -15,8 +15,8 @@ RUN useradd -m -s /bin/bash mkdocs
 
 # Создаем рабочую директорию /mkdocs и устанавливаем права для пользователя mkdocs
 USER root
-RUN mkdir -p /mkdocs && chown -R mkdocs:mkdocs /mkdocs
-
+RUN mkdir -p /mkdocs && chown -R mkdocs:mkdocs /mkdocs && \
+    mkdir -p /home/mkdocs/.local && chown -R mkdocs:mkdocs /home/mkdocs/.local
 # Переключаемся на непривилегированного пользователя
 USER mkdocs
 
